@@ -8,6 +8,8 @@
   <meta name="apple-mobile-web-app-title" content="Meditation" />
   <meta name="theme-color" content="#0a0a0f" />
   <title>Meditation Timer</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%230a0a0f'/%3E%3Cpath d='M50 2 a48 48 0 0 1 0 96 a24 24 0 0 1 0-48 a24 24 0 0 0 0-48' fill='%238a7248'/%3E%3Ccircle cx='50' cy='26' r='12' fill='%230a0a0f'/%3E%3Ccircle cx='50' cy='74' r='12' fill='%238a7248'/%3E%3Ccircle cx='50' cy='26' r='4.5' fill='%238a7248'/%3E%3Ccircle cx='50' cy='74' r='4.5' fill='%230a0a0f'/%3E%3Ccircle cx='50' cy='50' r='48' fill='none' stroke='%238a7248' stroke-width='1.2'/%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAEN0lEQVR42u3dwVEbQRCG0T5zIS3H4zCIh/xEAC4KYe3MTv/9Dt/N5RKtR9esJFb19vb+kFIqQxDQEtAS0DF9/P3zaQ5AH4tzV+YN9Al4H78IcqBvBfy4IcCBvgTx4+DgBro9YriB/hHxI7CxuGso5MegRsEu23gm7FTcZRvDDTTIYAMNMthA/wYzmBfCBtpWtq2BBhnsoaBBdgyJAQ0z1BGgQQY7BjTMUMeAhhnqCNAggx0DGmaoY0AnYn7y54Y6DXQS5hfnAHV30AmYF80F6m6gE7by4vm0hz0GtK08Z1vHg4YZ6hjQMEMdA7r7BeAhL2+6UDwBNMxQ70JdMAOdhLqcm/tgdp6+GTTMUO9GXTADnYS6nJuBTjpPl+3cD7MtvRG0T84BfSfqghnoJNTl3NwTs89R7wNtOwN925YumIFOQg000EAnYwa6N+pyIQh00gVi2c5AJ23pghnoJNRAAw30hFt2wdwTNdBAzwY95YaKQPdEDbTPQwM95VaxQJ+BehnoafdvBrrflgbaX33PBD357vow90ENNNCjQY/9LhGYe1wclu3s7qNJWxpo94ceC9pQ3cH/+GNH2c6+YyVpSwPtW7CA1vW4zW8DaJjX4jan61EDLaClzqANUW1evivbWUlbGmgBLQEtHQDa8NTqwrBsZyVtaaAFtAS0BLQEtIAGWkBLrUAbmtq9uQK0gJaAloCWXgT9cdF3Lksb7ir1j9VvN7SBqQPop48cBiagJaAloKVfv2wHtVq9wgG0gJaAloCWgBbQQAtoqQ9ob66o45sqT9191PDUZTsDLaAloKW7QbswVLcLwqe/p9AQ1WE7Ay2gdd2X0ZvTZtBQX48Y7nWYgb4ZMdxAx2OGejFoL9/thQz2aw7rqt8MmKG+ezsD3QAz1AtAO3a8H3G3TceNn/9dXf0bAjPUd21noIGeC3oq6hNv9A0z0DGYp6FeCnraxSHQfS4GXwI9BTXQvbYz0E0xT0G9BfQU1ED3www00MBPQN3pu/pgBhpooGehBron5stAp6EG+l7Mt4FO3dJA99zOl4BORA10T8xAAw30BNRA98S8BHQCaqB7XQguAW1Lw3yCmTr9AQKdv52v/D+rywMFOgv0KiPV4VwEdSbmNqBtaaDvslFdHzjQMG8HDTXMuy1U5/OS+3I4N28HnYAa6D7PfyX+UO5tNxPzVtDO087NcaChhjkONNQwx4H2xos3TuJAe0nPS3NxoH2O2uea40Cn/vX4xD+fOuH5K0NR0vNWhqOk56sMSknPTxmakp6XMjwlPR9lkEqafxmqkuZeXYcLtlm3Bw222UaCdgwxz0jQtrUZxoEG28wiQYNtRpGgv3vSpuOeMo+ykfzsQNtSfk6gz3/SG98z5NMRazjo7iAgBvolKHeCOfExAR0K/FVgq/9/oLUE4f9m3kAf+0tgDkBLQAtoKaIvQxk5GJDaKt4AAAAASUVORK5CYII=">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
@@ -307,7 +309,8 @@
     .setting-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      gap: 1rem;
       margin-bottom: 1rem;
     }
 
@@ -461,7 +464,7 @@
   </div>
 </div>
 
-<div class="install-hint" id="installHint">Add to Home Screen for best experience</div>
+
 
 <script>
 // ─── State ───────────────────────────────────────────────────────
@@ -526,7 +529,7 @@ async function onGongTap() {
   if (!isRunning) {
     const label = document.getElementById('phaseLabel');
     label.textContent = '· · ·';
-    setTimeout(() => { label.textContent = 'tap to preview'; }, 3000);
+    setTimeout(() => { label.textContent = ''; }, 3000);
   }
 }
 
