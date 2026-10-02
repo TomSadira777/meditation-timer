@@ -619,10 +619,10 @@ const Native = {
   end()                    { if (this.on) window.Android.endSession(); }
 };
 
-function strikeGong() {
-  // Inside the APK the bell is rung by the OS alarm, not by this webview —
-  // otherwise it would sound twice. The visual strike still runs here.
-  if (!Native.on) playGong();
+function strikeGong(silent) {
+  // Only the SCHEDULED bell defers to the native alarm (passing silent=true),
+  // or it would sound twice. A manual tap must always be audible.
+  if (!silent) playGong();
   const face = document.getElementById('gongFace');
   const ripple = document.getElementById('ripple');
   face.classList.remove('striking');
@@ -675,9 +675,8 @@ function updateSnoozeDots() {
 // remaining time is still correct the instant we come back.
 
 function onPhaseComplete() {
-  // The single place where "the bell fires." Kept separate from the
-  // countdown so it can be swapped for a native scheduled alert later.
-  strikeGong();
+  // The single place where "the bell fires." Native rings it in the APK.
+  strikeGong(Native.on);
 }
 
 function syncTimer() {
@@ -942,7 +941,7 @@ function adjustSetting(type, delta) {
 }
 
 // ─── PWA service worker ──────────────────────────────────────────
-if ('serviceWorker' in navigator) {
+if (!Native.on && 'serviceWorker' in navigator) try {
   // Inline SW via blob
   const swCode = `
     const CACHE = 'meditation-v1';
@@ -956,6 +955,8 @@ if ('serviceWorker' in navigator) {
   const swBlob = new Blob([swCode], { type: 'application/javascript' });
   const swURL = URL.createObjectURL(swBlob);
   navigator.serviceWorker.register(swURL).catch(() => {});
+} catch (e) {
+  console.warn('SW registration skipped:', e);
 }
 
 // Hide install hint after 5s
